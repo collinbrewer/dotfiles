@@ -1,3 +1,5 @@
+.gitattributes !filter !diff
+
 ssh/.ssh/config filter=git-crypt diff=git-crypt
 postgres/.pg_service.conf filter=git-crypt diff=git-crypt
-gitcrypt-test filter=git-crypt diff=git-crypt
+gitcrypt-test.txt filter=git-crypt diff=git-crypt
