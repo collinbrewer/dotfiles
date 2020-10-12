@@ -2,4 +2,4 @@
 
 ssh/.ssh/config filter=git-crypt diff=git-crypt
 postgres/.pg_service.conf filter=git-crypt diff=git-crypt
-gitcrypt-test.txt filter=git-crypt diff=git-crypt
+aws/.aws/** filter=git-crypt diff=git-crypt
