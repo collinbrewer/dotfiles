@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# set of shortcuts for loading up screen sessions
+
+# TODO: hardcoded for now, but eventually pull from $HOME/.screenifyrc
+screenify_search_paths=(
+	"/home/collinbrewer/Documents/work/sumo/repos"
+	"/home/collinbrewer/Documents/work/appsumo/repos"
+	"/home/collinbrewer/Documents/work/brewer-collective/repos"
+	"/home/collinbrewer/Documents/work/brand-impact/repos"
+)
+
+# Shortcut for loading up screen sessions from a config
+function screenify-open() {
+	search_paths="${screenify_search_paths[@]}"
+	path=$(find $search_paths -type d -mindepth 1 -maxdepth 1 | fzf)
+
+	if [ ! -z "$path" ]; then
+		cd $path
+		cwd=$(pwd)
+		name=$(basename "${cwd}")
+
+		# NOTE: not specific enough if you have two folders with the same name, but good enough for now
+		cnf="${HOME}/.screenify/${name}.screenrc"
+
+		if [ ! -f "$cnf" ]; then
+			cnf="${HOME}/.screenify/_default.screenrc"
+		fi
+
+		if [ -f "$cnf" ]; then
+			screen -c $cnf -S $name
+		else
+			screen -S $name
+		fi
+	fi
+}
+
+function screenify-reattach() {
+session=$(screen -ls | grep "[0-9]\." | grep "(Detached)" | sed "s/(Detached)//" | sed "s/\t*//g" | fzf)
+
+  if [ -n "$session" ]; then
+    screen -r "$session"
+  fi
+}
+
+case "$1" in
+        o)
+          screenify-open
+          ;;
+        r)
+          screenify-reattach
+          ;;
+        *)
+          echo $"Usage: $0 {n|o|r}"
+esac
