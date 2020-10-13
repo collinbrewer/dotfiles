@@ -28,6 +28,9 @@ alias fgd='git diff $(git ls-files -m | fzf)'
 alias fga='git add $(git ls-files --others --exclude-standard | fzf)'
 alias fgap='git add -p $(git ls-files --others --exclude-standard | fzf)'
 
+# vim is nvim
+alias vim=nvim
+
 # fzf + ssh
 alias fssh='ssh $(cat ~/.ssh/config | grep "Host " | grep -v "#" | sed "s/Host //" | fzf)'
 
