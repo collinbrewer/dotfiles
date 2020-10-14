@@ -1,0 +1,20 @@
+# pick up the base screenrc
+source $HOME/.screenrc
+
+# name the session
+# sessionname "default session"
+
+# spin it up
+screen -t vim 0
+stuff "vim"
+
+screen -t zsh 1
+stuff "ls"
+
+screen -t tests 8
+
+screen -t service 9
+
+# start off in vim
+select 0
+
