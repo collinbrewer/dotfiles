@@ -11,4 +11,4 @@ git remote add origin git@github.com:collinbrewer/dotfiles.git
 git pull origin master
 
 echo
-echo "Now just `stow git zsh screen ...`
+echo "Now just `stow git zsh screen ...`"
