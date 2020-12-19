@@ -12,14 +12,8 @@ alias dka='docker kill $(docker ps -q)'
 
 # alias ctags="`brew --prefix`/bin/ctags"
 
-alias gco='git checkout'
-alias ga='git add'
 # alias gb="git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 alias gpu='git push -u origin `git rev-parse --abbrev-ref HEAD`'
-alias gst='git status'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias gap='git add -p'
 
 # git + fzf
 alias fgcob='git checkout $(git branch | sed "s/\*//" | fzf)'

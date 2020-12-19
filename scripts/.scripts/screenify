@@ -43,12 +43,22 @@ session=$(screen -ls | grep "[0-9]\." | grep "(Detached)" | sed "s/(Detached)//"
   fi
 }
 
+function screenify-new() {
+  cnf="${HOME}/.screenify/_default.screenrc"
+  cwd=$(pwd)
+  name=$(basename "${cwd}")
+  screen -c $cnf -S $name
+}
+
 case "$1" in
         o)
           screenify-open
           ;;
         r)
           screenify-reattach
+          ;;
+        n)
+          screenify-new
           ;;
         *)
           echo $"Usage: $0 {n|o|r}"
