@@ -1,5 +1,5 @@
 # load up antigen
-zstyle :omz:plugins:ssh-agent identities id_rsa sumo/id_rsa
+zstyle :omz:plugins:ssh-agent identities id_rsa
 source /usr/share/zsh/share/antigen.zsh
 antigen init ~/.antigenrc
 
@@ -27,7 +27,7 @@ vim_prompt() {
 }
 
 # Add NVM to PATH
-source /usr/share/nvm/init-nvm.sh
+[ -z "/usr/share/nvm/init-nvm.sh" ] && source /usr/share/nvm/init-nvm.sh
 #
 # path
 export PATH=/Users/collinbrewer/Library/Python/3.6/bin:$PATH

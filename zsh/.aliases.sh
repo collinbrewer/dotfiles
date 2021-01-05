@@ -27,8 +27,3 @@ alias open=xdg-open
 
 # osx
 # alias ctags="`brew --prefix`/bin/ctags"
-
-# appsumo
-alias as_clean_tests="sudo find . -type d -name __pycache__ -exec rm -r {} \+"
-
-alias ass='ssh asstage01 "docker ps --filter=\"name=django\" --format=\"{{.Status}}\t{{.Names}}\""'
