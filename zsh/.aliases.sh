@@ -15,6 +15,10 @@ alias fgap='git add -p $(git ls-files --others --exclude-standard | fzf)'
 # vim is nvim
 alias vim=nvim
 
+# mux
+alias mux=tmuxinator
+alias fmux='mux $(ls ~/.config/tmuxinator | xargs -n 1 basename | cut -d\. -f1 | fzf)'
+
 # fzf + ssh
 alias fssh='ssh $(cat ~/.ssh/config | grep "Host " | grep -v "#" | sed "s/Host //" | fzf)'
 
