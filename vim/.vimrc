@@ -23,6 +23,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'janko-m/vim-test'
 Plug 'eliba2/vim-node-inspect'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " fzf
