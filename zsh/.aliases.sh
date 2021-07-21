@@ -4,6 +4,7 @@ alias settitle="printf '\033]0;%s\007'"
 
 # docker
 alias dka='docker kill $(docker ps -q)'
+alias dcupdl='dcupd && dclf --tail=100'
 
 # git + fzf
 alias fgcob='git checkout $(git branch | sed "s/\*//" | fzf)'
@@ -31,7 +32,11 @@ alias open=xdg-open
 
 # osx
 # alias ctags="`brew --prefix`/bin/ctags"
+
 # git
 alias gsta="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \;"
 alias gda="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git diff && echo)' \;"
 alias gro="git remote -v | head -n 1 | awk -F @ '{print \$2}' | awk -F ' ' '{print \$1}' | sed 's/:/\//g' | awk '{print \"http://\"\$1}' | xargs xdg-open"
+
+# localstack
+alias laws='aws --endpoint-url=http://localhost:4566'

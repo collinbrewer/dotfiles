@@ -18,7 +18,7 @@ chpwd_functions=( auto-ls $chpwd_functions )
 # export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # vim 4eva
-export EDITOR='vim'
+export EDITOR='nvim'
 
 vim_prompt() {
   if [ ! -z $VIMRUNTIME ]; then
