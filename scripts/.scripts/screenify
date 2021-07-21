@@ -4,8 +4,6 @@
 
 # TODO: hardcoded for now, but eventually pull from $HOME/.screenifyrc
 screenify_search_paths=(
-	"/home/collinbrewer/Documents/work/sumo/repos"
-	"/home/collinbrewer/Documents/work/appsumo/repos"
 	"/home/collinbrewer/Documents/work/brewer-collective/repos"
 	"/home/collinbrewer/Documents/work/brand-impact/repos"
 )
