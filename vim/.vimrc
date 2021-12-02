@@ -171,3 +171,8 @@ if executable(s:clip)
 		autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
 	augroup END
 endif
+
+" js log helpers
+imap cll console.log();<Esc>==F(a
+vmap cll yocll<Esc>p
+nmap cll yiwocll<Esc>p
