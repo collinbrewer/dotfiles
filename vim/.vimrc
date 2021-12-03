@@ -173,6 +173,6 @@ if executable(s:clip)
 endif
 
 " js log helpers
-imap cll console.log();<Esc>==F(a
-vmap cll yocll<Esc>p
-nmap cll yiwocll<Esc>p
+imap cll console.log();<esc>==F(a
+vmap cll yocll'<esc>pa', <esc>p$
+nmap cll yiwocll'<esc>pa', <esc>p$
