@@ -40,10 +40,12 @@ spoon.SpoonInstall.use_syncinstall = true
 
 -- attempt to wire up all custom mappings to a hyper-esque keystroke
 local hyper = { 'cmd', 'ctrl' }
+-- local hyper = { 'cmd', 'ctrl', 'option', 'shift' }
 
 --------------------------------------------------
 -- Reload hammerspoon config
 --------------------------------------------------
+
 -- reload manually
 hs.hotkey.bind(hyper, 'r', function()
   hs.reload()
@@ -62,83 +64,93 @@ end):start()
 --------------------------------------------------
 -- Window snapping
 --------------------------------------------------
-hs.window.animationDuration = 0
-hs.hotkey.bind(hyper, 'h', function()
-  local win = hs.window.focusedWindow();
-  if not win then return end
-  win:moveToUnit(hs.layout.left50)
-end)
-hs.hotkey.bind(hyper, 'j', function()
-  local win = hs.window.focusedWindow();
-  if not win then return end
-  win:moveToUnit(hs.layout.maximized)
-end)
-hs.hotkey.bind(hyper, 'k', function()
-  local win = hs.window.focusedWindow();
-  if not win then return end
-  win:moveToScreen(win:screen():next())
-end)
-hs.hotkey.bind(hyper, 'l', function()
-  local win = hs.window.focusedWindow();
-  if not win then return end
-  win:moveToUnit(hs.layout.right50)
-end)
+--
+-- hs.window.animationDuration = 0
+-- hs.hotkey.bind(hyper, 'h', function()
+--   local win = hs.window.focusedWindow();
+--   if not win then return end
+--   win:moveToUnit(hs.layout.left50)
+-- end)
+-- hs.hotkey.bind(hyper, 'j', function()
+--   local win = hs.window.focusedWindow();
+--   if not win then return end
+--   win:moveToUnit(hs.layout.maximized)
+-- end)
+-- hs.hotkey.bind(hyper, 'k', function()
+--   local win = hs.window.focusedWindow();
+--   if not win then return end
+--   win:moveToScreen(win:screen():next())
+-- end)
+-- hs.hotkey.bind(hyper, 'l', function()
+--   local win = hs.window.focusedWindow();
+--   if not win then return end
+--   win:moveToUnit(hs.layout.right50)
+-- end)
+-- hs.hotkey.bind(hyper, 'c', function()
+--   local win = hs.window.frame();
+--   if (frame.xy)
+--
+--   end 
+-- end)
 
 
 --------------------------------------------------
 -- Application hot keys
 --------------------------------------------------
-local applicationHotkeys = {
-  ['1'] = 'Google Chrome',
-  ['2'] = 'Alacritty',
-  ['3'] = 'DataGrip',
-  ['4'] = 'Slack',
-  ['5'] = 'Mail',
-  ['0'] = 'Spotify',
 
-  ['b'] = 'Google Chrome',
-  ['d'] = 'DataGrip',
-  ['t'] = 'Alacritty',
-  ['s'] = 'Slack',
-  ['m'] = 'Spotify',
-}
+-- local applicationHotkeys = {
+--   ['1'] = '1Password',
+--   ['2'] = 'Notion',
+--   ['3'] = 'Discord',
+--   ['4'] = 'Slack',
+--   ['5'] = 'Mail',
+--   ['0'] = 'Messages',
+--
+--   ['b'] = 'Arc',
+--   ['d'] = 'DataGrip',
+--   ['t'] = 'Alacritty',
+--   ['s'] = 'Slack',
+--   ['m'] = 'Spotify',
+--   ['y'] = 'Insomnia',
+--   [','] = 'System Preferences',
+--   ['x'] = 'Sunsama',
+-- }
 
-for key, app in pairs(applicationHotkeys) do
-  hs.hotkey.bind(hyper, key, function()
-    hs.application.launchOrFocus(app)
-  end)
-end
+-- for key, app in pairs(applicationHotkeys) do
+--   hs.hotkey.bind(hyper, key, function()
+--     hs.application.launchOrFocus(app)
+--   end)
+-- end
 
 --------------------------------------------------
 -- Consistent media keys
 --------------------------------------------------
-local bindSystemKey = function(systemKey)
-  return function()
-    hs.eventtap.event.newSystemKeyEvent(systemKey, true):post()
-    hs.eventtap.event.newSystemKeyEvent(systemKey, false):post()
-  end
-end
+-- local bindSystemKey = function(systemKey)
+--   return function()
+--     hs.eventtap.event.newSystemKeyEvent(systemKey, true):post()
+--     hs.eventtap.event.newSystemKeyEvent(systemKey, false):post()
+--   end
+-- end
 
 -- repeating
-hs.hotkey.bind(hyper, 'o', bindSystemKey('SOUND_DOWN'), nil, bindSystemKey('SOUND_DOWN'))
-hs.hotkey.bind(hyper, 'p', bindSystemKey('SOUND_UP'), nil, bindSystemKey('SOUND_UP'))
+-- hs.hotkey.bind(hyper, 'o', bindSystemKey('SOUND_DOWN'), nil, bindSystemKey('SOUND_DOWN'))
+-- hs.hotkey.bind(hyper, 'p', bindSystemKey('SOUND_UP'), nil, bindSystemKey('SOUND_UP'))
 
 -- non-repeating
-hs.hotkey.bind(hyper, 'i', bindSystemKey('MUTE'))
-hs.hotkey.bind(hyper, 'w', bindSystemKey('PLAY'))
-hs.hotkey.bind(hyper, 'e', bindSystemKey('NEXT'))
-hs.hotkey.bind(hyper, 'q', bindSystemKey('PREVIOUS'))
-
+-- hs.hotkey.bind(hyper, 'i', bindSystemKey('MUTE'))
+-- hs.hotkey.bind(hyper, 'w', bindSystemKey('PLAY'))
+-- hs.hotkey.bind(hyper, 'e', bindSystemKey('NEXT'))
+-- hs.hotkey.bind(hyper, 'q', bindSystemKey('PREVIOUS'))
 
 --------------------------------------------------
 -- Caffeine
 --------------------------------------------------
-spoon.SpoonInstall:andUse('Caffeine', {
-  start = true,
-  hotkeys = {
-    toggle = { hyper, "c" },
-  },
-})
+-- spoon.SpoonInstall:andUse('Caffeine', {
+--   start = true,
+--   hotkeys = {
+--     toggle = { hyper, "c" },
+--   },
+-- })
 
 --------------------------------------------------
 -- Push to talk mic functionality
@@ -151,11 +163,18 @@ spoon.SpoonInstall:andUse('Caffeine', {
 -- })
 
 --------------------------------------------------
--- Now playing
+-- Spotify
 --------------------------------------------------
-hs.hotkey.bind(hyper, 'u', function()
-  hs.spotify.displayCurrentTrack()
-end)
+-- hs.hotkey.bind(hyper, 'u', function()
+--   hs.spotify.displayCurrentTrack()
+-- end)
+
+-- hs.hotkey.bind({'cmd', 'ctrl', 'shift'}, 'o', function()
+--   hs.spotify.volumeDown()
+-- end)
+-- hs.hotkey.bind({'cmd', 'ctrl', 'shift'}, 'p', function()
+--   hs.spotify.volumeUp()
+-- end)
 
 --------------------------------------------------
 -- Window switcher
@@ -194,7 +213,14 @@ require('./modules/fuzzy-window-switcher')
 --------------------------------------------------
 -- Homebrew
 --------------------------------------------------
+--
+local homebrewIconWhite = hs.image
+  .imageFromPath('~/.hammerspoon/images/homebrew-white.png')
+  :setSize(hs.geometry.size(16, 16))
+
 local homebrewMenubar = hs.menubar.new()
+homebrewMenubar:setIcon(homebrewIconWhite)
+
 homebrewMenubar:setClickCallback(function()
   hs.applescript.applescript([[
     tell application "Terminal"
@@ -209,10 +235,11 @@ function updateHomebrewMenubar()
   local _, numOutdated = outdated:gsub('\n', '\n')
 
   if numOutdated > 0 then
-    homebrewMenubar:setTitle(string.format('🍺 %s', numOutdated))
+    homebrewMenubar:setTitle(string.format(' %s', numOutdated))
     homebrewMenubar:setTooltip(outdated)
   else
-    homebrewMenubar:delete()
+    homebrewMenubar:setTitle(nil)
+    homebrewMenubar:setTooltip('Up to date')
   end
 end
 
@@ -222,22 +249,45 @@ hs.timer.doEvery(3600, updateHomebrewMenubar)
 --------------------------------------------------
 -- Speak selected text
 --------------------------------------------------
-local speaker = hs.speech.new()
-speaker:rate(220)
+-- local speaker = hs.speech.new()
+-- speaker:rate(220)
+--
+-- function toggleSpeakSelectedText()
+--   if speaker:speaking() then
+--     speaker:stop()
+--   else
+--     -- snatched from https://github.com/Hammerspoon/Spoons/blob/master/Source/LookupSelection.spoon/init.lua#L51
+--     hs.eventtap.keyStroke({"cmd"}, "c")
+--     hs.timer.usleep(20000)
+--     sel=hs.pasteboard.getContents()
+--
+--     if sel then
+--       speaker:speak(sel)
+--     end
+--   end
+-- end
 
-function toggleSpeakSelectedText()
-  if speaker:speaking() then
-    speaker:stop()
-  else
-    -- snatched from https://github.com/Hammerspoon/Spoons/blob/master/Source/LookupSelection.spoon/init.lua#L51
-    hs.eventtap.keyStroke({"cmd"}, "c")
-    hs.timer.usleep(20000)
-    sel=hs.pasteboard.getContents()
+-- hs.screen.watcher.new(function()
+--   if num_of_screens ~= #hs.screen.allScreens() then
+--     autolayout.autoLayout()
+--     hs.application.get('Logi Options+'):kill();
+--     hs.application.get('Logi Options+'):kill();
+--   else
+--   end
+-- end):start()
 
-    if sel then
-      speaker:speak(sel)
-    end
-  end
-end
-
-hs.hotkey.bind(hyper, 's', toggleSpeakSelectedText)
+-- connected to AirPods by name
+-- function connectToAirPods(name)
+--   local current = hs.audiodevice.defaultInputDevice()
+--   if current and current:name() == name then return true end
+--
+--   local device = hs.audiodevice.findOutputByName(name)
+--   if device == nil then
+--     hs.alert.show(name.." is not connected")
+--   else
+--     return device:setDefaultOutputDevice()
+--   end
+-- end
+--
+-- -- keymap
+-- hs.hotkey.bind(hyper, "a", function() connectToAirPods("Collin’s AirPods Pro") end)
