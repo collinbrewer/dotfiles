@@ -1,15 +1,24 @@
+zmodload zsh/zprof
+
 antigen use oh-my-zsh
 
-antigen bundle git
 antigen bundle docker
 antigen bundle docker-compose
-antigen bundle ssh-agent
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
+antigen bundle fzf
+antigen bundle git
 antigen bundle mafredri/zsh-async
+antigen bundle ssh-agent
+antigen bundle vi-mode
+antigen bundle z
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+export NVM_LAZY_LOAD=true
+antigen bundle lukechilds/zsh-nvm
+antigen bundle Sparragus/zsh-auto-nvm-use
 
 # themes
 # antigen theme denysdovhan/spaceship-prompt
-antigen bundle sindresorhus/pure
+antigen theme spaceship-prompt/spaceship-prompt
 
 antigen apply
