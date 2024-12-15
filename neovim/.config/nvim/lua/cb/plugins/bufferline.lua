@@ -1,0 +1,33 @@
+return {}
+-- return {
+--   "akinsho/bufferline.nvim",
+--   dependencies = {
+--     "nvim-tree/nvim-web-devicons",
+--   },
+--   config = function()
+--     require('bufferline').setup({
+--       options = {
+--         -- numbers = "ordinal",
+--         diagnostics = "nvim_lsp",
+--         -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
+--         --   local icon = level:match("error") and "" or ""
+--         --   return " " .. icon .. count
+--         -- end,
+--         show_buffer_close_icons = false,
+--         show_close_icon = false,
+--         show_tab_indicators = true,
+--         -- separator_style = "thin",
+--         -- always_show_bufferline = true,
+--         -- offsets = {
+--         --   {
+--         --     filetype = "NvimTree",
+--         --     text = "File Explorer",
+--         --     text_align = "center",
+--         --   },
+--         -- },
+--       },
+--     })
+--
+--     vim.api.nvim_set_keymap('n', '<leader>gb', ':BufferLinePick<CR>', { noremap = true, silent = true })
+--   end,
+-- }
