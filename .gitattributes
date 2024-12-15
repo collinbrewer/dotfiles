@@ -4,3 +4,4 @@ ssh/.ssh/config filter=git-crypt diff=git-crypt
 postgres/.pg_service.conf filter=git-crypt diff=git-crypt
 aws/.aws/** filter=git-crypt diff=git-crypt
 zsh/secrets.sh filter=git-crypt diff=git-crypt
+aider/.aider.conf.yml filter=git-crypt diff=git-crypt
