@@ -9,6 +9,7 @@ cd "$DOTFILES"
 git init
 git remote add origin git@github.com:collinbrewer/dotfiles.git
 git pull origin master
+git-crypt unlock
 
 echo
 echo "Now just `stow git zsh screen ...`"
