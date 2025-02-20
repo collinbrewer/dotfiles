@@ -4,6 +4,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     -- { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    "nvim-telescope/telescope-live-grep-args.nvim",
     "nvim-tree/nvim-web-devicons",
     "folke/todo-comments.nvim",
   },
@@ -14,6 +15,7 @@ return {
 
     local trouble = require("trouble")
     local trouble_telescope = require("trouble.sources.telescope")
+    local lga_actions = require("telescope-live-grep-args.actions")
 
     -- or create your custom action
     local custom_actions = transform_mod({
@@ -32,14 +34,16 @@ return {
             ["<C-w>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
             -- ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
             ["<C-t>"] = trouble_telescope.open,
+
+            -- quote the prompt with live_grep_args actions
+            ["<C-l"] = lga_actions.quote_prompt(),
+            ["<C-f>"] = actions.to_fuzzy_refine,
           },
         },
       },
     })
 
-    -- telescope.load_extension("fzf")
-
-    -- keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+    -- map builtins
     local builtin = require("telescope.builtin")
     vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
@@ -52,5 +56,11 @@ return {
       "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
       { desc = "telescope find all files" }
     )
+
+    -- configure live_grep_args
+    -- https://github.com/nvim-telescope/telescope-live-grep-args.nvim?tab=readme-ov-file#usage
+    telescope.load_extension('live_grep_args')
+    vim.keymap.set("n", "<leader>fs", telescope.extensions.live_grep_args.live_grep_args, { noremap = true })
+
   end,
 }
